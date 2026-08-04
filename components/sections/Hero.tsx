@@ -22,20 +22,45 @@ export default function Hero() {
         }}
       />
 
-      <div className="relative mx-auto flex w-full max-w-[1500px] items-center justify-between px-12 pt-28">
+      <div
+  className="
+    relative
+    mx-auto
+    flex
+    w-full
+    max-w-[1500px]
+    flex-col
+    items-center
+    gap-16
+    px-6
+    pt-32
+    lg:flex-row
+    lg:items-center
+    lg:justify-between
+    lg:px-12
+  "
+>
         {/* LEFT */}
 
         <motion.div
           initial={{ opacity: 0, y: 35 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="max-w-3xl"
+          className="max-w-3xl text-center lg:text-left"
         >
-          <div className="mb-8 inline-flex rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white">
+          <div className="mb-8 inline-flex rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs text-white sm:text-sm">
             Software Engineering • AI • Automation
           </div>
 
-          <h1 className="font-heading text-8xl font-bold leading-[0.9] tracking-tight">
+          <h1 className="
+font-heading
+text-5xl
+font-bold
+leading-[0.9]
+tracking-tight
+sm:text-6xl
+lg:text-8xl
+">
             Costruiamo
             <span className="text-zinc-300"> software</span>
             <br />
@@ -50,7 +75,7 @@ export default function Hero() {
             aziende a digitalizzare i processi e crescere.
           </p>
 
-          <div className="mt-14 flex gap-4">
+          <div className="mt-14 flex flex-col gap-4 sm:flex-row">
             <Button size="lg" className="rounded-full">
               Richiedi una consulenza
               <ArrowRight className="ml-2 h-4 w-4" />

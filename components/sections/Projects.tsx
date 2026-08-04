@@ -1,59 +1,28 @@
-import {
-  ArrowUpRight,
-  Factory,
-  LayoutDashboard,
-  Users,
-} from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import Container from "@/components/shared/Container";
+import SectionTitle from "@/components/shared/SectionTitle";
 
-const projects = [
-  {
-    icon: LayoutDashboard,
-    title: "Gestionale Produzione",
-    category: "Web Platform",
-    description:
-      "Piattaforma per monitorare ordini, produzione e stato delle lavorazioni.",
-  },
-  {
-    icon: Users,
-    title: "CRM Aziendale",
-    category: "Business Software",
-    description:
-      "Sistema centralizzato per la gestione di clienti, offerte e attività commerciali.",
-  },
-  {
-    icon: Factory,
-    title: "Portale Clienti",
-    category: "Enterprise",
-    description:
-      "Area riservata dove clienti e fornitori possono consultare documenti e pratiche.",
-  },
-];
+import { projects } from "@/data/projects";
 
 export default function Projects() {
   return (
     <section
-      id="projects"
-      className="mx-auto max-w-[1500px] px-12 py-36"
-    >
-      <div className="flex items-end justify-between">
+  id="projects"
+  className="py-24 lg:py-36"
+>
+  <Container>
+      <SectionTitle
+  eyebrow="Progetti"
+  title={
+    <>
+      Alcuni esempi
+      <br />
+      di soluzioni realizzabili.
+    </>
+  }
+/>
 
-        <div>
-
-          <p className="text-sm uppercase tracking-[0.35em] text-zinc-500">
-            Progetti
-          </p>
-
-          <h2 className="mt-4 text-5xl font-bold">
-            Alcuni esempi
-            <br />
-            di soluzioni realizzabili.
-          </h2>
-
-        </div>
-
-      </div>
-
-      <div className="mt-20 grid gap-8 lg:grid-cols-3">
+      <div className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
 
         {projects.map((project) => {
 
@@ -65,7 +34,7 @@ export default function Projects() {
               className="group rounded-3xl border border-white/5 bg-white/[0.02] overflow-hidden transition hover:border-white/10"
             >
 
-              <div className="flex h-56 items-center justify-center border-b border-white/5 bg-gradient-to-br from-zinc-900 to-black">
+              <div className="flex h-48 lg:h-56 items-center justify-center border-b border-white/5 bg-gradient-to-br from-zinc-900 to-black">
 
                 <Icon
                   size={56}
@@ -74,7 +43,7 @@ export default function Projects() {
 
               </div>
 
-              <div className="p-8">
+              <div className="p-6 lg:p-8">
 
                 <p className="text-sm uppercase tracking-[0.25em] text-zinc-500">
                   {project.category}
@@ -102,10 +71,11 @@ export default function Projects() {
 
       </div>
 
-      <p className="mt-10 text-sm text-zinc-500">
+       <p className="mt-10 text-sm text-zinc-500">
         * Le soluzioni mostrate rappresentano esempi di tipologie di progetti sviluppabili da Vanta Systems.
       </p>
 
-    </section>
+    </Container>
+</section>
   );
 }
