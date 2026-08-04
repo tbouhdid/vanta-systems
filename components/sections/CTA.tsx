@@ -1,4 +1,5 @@
-import Container from "../shared/Container";
+import Container from "@/components/shared/Container";
+import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
 export default function CTA() {
@@ -36,26 +37,18 @@ export default function CTA() {
               migliore per la tua azienda.
             </p>
 
-            <button
-              className="
-                mt-10
-                inline-flex
-                items-center
-                gap-3
-                rounded-full
-                bg-white
-                px-8
-                py-4
-                font-medium
-                text-black
-                transition
-                hover:scale-105
-              "
+            <a
+                href="/contact"
+                className="mt-10 inline-block"
             >
-              Richiedi una consulenza
-
-              <ArrowRight size={18} />
-            </button>
+                <Button
+                    size="lg"
+                    className="rounded-full"
+                >
+                    Richiedi una consulenza
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+            </a>
           </div>
         </div>
       </Container>

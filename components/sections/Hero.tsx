@@ -75,19 +75,23 @@ lg:text-8xl
             aziende a digitalizzare i processi e crescere.
           </p>
 
-          <div className="mt-14 flex flex-col gap-4 sm:flex-row">
-            <Button size="lg" className="rounded-full">
-              Richiedi una consulenza
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+          <div className="mt-14 flex flex-col gap-4 sm:flex-row sm:justify-center lg:justify-start">
+            <a href="/contact">
+  <Button size="lg" className="rounded-full">
+    Richiedi una consulenza
+    <ArrowRight className="ml-2 h-4 w-4" />
+  </Button>
+</a>
 
-            <Button
-              size="lg"
-              variant="outline"
-              className="rounded-full"
-            >
-              Scopri i servizi
-            </Button>
+            <a href="#services">
+  <Button
+    size="lg"
+    variant="outline"
+    className="rounded-full"
+  >
+    Scopri i servizi
+  </Button>
+</a>
           </div>
 
           {/* Value Proposition */}

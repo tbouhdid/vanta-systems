@@ -54,7 +54,7 @@ export default function Navbar() {
 
        <>
   {/* Desktop */}
-  <a href="#cta" className="hidden md:block">
+  <a href="/contact" className="hidden md:block">
     <Button
       className="
         rounded-full

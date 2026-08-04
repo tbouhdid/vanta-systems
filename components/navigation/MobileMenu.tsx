@@ -33,29 +33,37 @@ export default function MobileMenu() {
         side="right"
         className="border-white/10 bg-black"
       >
-        <div className="mt-16 flex flex-col gap-6">
+        <div className="mt-14 flex h-full flex-col">
 
           {navigation.map((item) => (
             <a
               key={item.label}
               href={item.href}
               onClick={() => setOpen(false)}
-              className="text-lg font-medium text-zinc-200 transition hover:text-white"
+              className="
+                py-2
+                text-xl
+                font-medium
+                tracking-tight
+                text-zinc-300
+                transition
+                hover:text-white
+            "
             >
               {item.label}
             </a>
           ))}
 
-          <a
-            href="#cta"
-            onClick={() => setOpen(false)}
-            className="mt-6"
-          >
+        <div className="mt-auto border-t border-white/10 pt-8">
+            <a
+                href="/contact"
+                onClick={() => setOpen(false)}
+            >
             <Button className="w-full rounded-full">
-              Richiedi consulenza
+                Richiedi consulenza
             </Button>
-          </a>
-
+            </a>
+        </div>
         </div>
       </SheetContent>
     </Sheet>
