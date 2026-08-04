@@ -3,6 +3,7 @@
 import MobileMenu from "@/components/navigation/MobileMenu";
 import { Button } from "@/components/ui/button";
 import { navigation } from "@/data/navigation";
+import Image from "next/image";
 
 export default function Navbar() {
   return (
@@ -26,14 +27,17 @@ export default function Navbar() {
         lg:py-4
     "
     >
-        <a href="#" className="
+        <a
+            href="#"
+            className="
             text-lg
             font-black
             tracking-[0.28em]
             lg:text-xl
             lg:tracking-[0.35em]
-        ">
-          VANTA
+        "
+        >
+            VANTA
         </a>
 
         <nav className="hidden items-center gap-8 md:flex">
@@ -63,7 +67,7 @@ export default function Navbar() {
       Richiedi consulenza
     </Button>
   </a>
-  
+
     <MobileMenu />
 
 </>
