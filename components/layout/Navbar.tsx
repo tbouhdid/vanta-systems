@@ -26,10 +26,10 @@ export default function Navbar() {
         lg:px-6
         lg:py-4
     "
-    >
+      >
         <a
-            href="#"
-            className="
+          href="#"
+          className="
             text-lg
             font-black
             tracking-[0.28em]
@@ -37,7 +37,7 @@ export default function Navbar() {
             lg:tracking-[0.35em]
         "
         >
-            VANTA
+          VANTA
         </a>
 
         <nav className="hidden items-center gap-8 md:flex">
@@ -52,25 +52,26 @@ export default function Navbar() {
           ))}
         </nav>
 
-       <>
-  {/* Desktop */}
-  <a href="/contact" className="hidden md:block">
-    <Button
-      className="
+        <>
+          {/* Desktop */}
+          <a href="/contact" className="hidden md:block">
+            <Button
+              className="
         rounded-full
         px-6
         bg-zinc-100
         text-black
         hover:bg-white
       "
-    >
-      Richiedi consulenza
-    </Button>
-  </a>
+            >
+              Richiedi consulenza
+            </Button>
+          </a>
 
-    <MobileMenu />
-
-</>
+          <div className="md:hidden">
+            <MobileMenu />
+          </div>
+        </>
       </div>
     </header>
   );
