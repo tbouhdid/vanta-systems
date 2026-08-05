@@ -1,11 +1,61 @@
+"use client";
+
+import { useState } from "react";
+
 import Container from "@/components/shared/Container";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+
 import { ArrowRight } from "lucide-react";
 
 export default function ContactPage() {
+  const [loading, setLoading] = useState(false);
+
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    company: "",
+    message: "",
+  });
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    setLoading(true);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        alert(data.error);
+        return;
+      }
+
+      alert("Richiesta inviata con successo!");
+
+      setForm({
+        name: "",
+        email: "",
+        company: "",
+        message: "",
+      });
+    } catch {
+      alert("Errore durante l'invio.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <main className="py-36">
       <Container>
@@ -23,8 +73,7 @@ export default function ContactPage() {
 
             <p className="mx-auto mt-8 max-w-2xl text-lg leading-8 text-muted-foreground">
               Raccontaci cosa vuoi realizzare. Analizzeremo le tue esigenze e
-              ti ricontatteremo il prima possibile per organizzare una
-              consulenza.
+              ti ricontatteremo il prima possibile per organizzare una consulenza.
             </p>
 
           </div>
@@ -40,9 +89,10 @@ export default function ContactPage() {
               md:p-10
             "
           >
-
-            <form className="space-y-8">
-
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-8"
+            >
               <div className="grid gap-6 md:grid-cols-2">
 
                 <div className="space-y-2">
@@ -52,7 +102,12 @@ export default function ContactPage() {
 
                   <Input
                     id="name"
+                    value={form.name}
+                    onChange={(e) =>
+                      setForm({ ...form, name: e.target.value })
+                    }
                     placeholder="Mario Rossi"
+                    required
                   />
                 </div>
 
@@ -64,7 +119,12 @@ export default function ContactPage() {
                   <Input
                     id="email"
                     type="email"
+                    value={form.email}
+                    onChange={(e) =>
+                      setForm({ ...form, email: e.target.value })
+                    }
                     placeholder="mario@azienda.it"
+                    required
                   />
                 </div>
 
@@ -77,6 +137,10 @@ export default function ContactPage() {
 
                 <Input
                   id="company"
+                  value={form.company}
+                  onChange={(e) =>
+                    setForm({ ...form, company: e.target.value })
+                  }
                   placeholder="Nome della tua azienda (opzionale)"
                 />
               </div>
@@ -89,21 +153,29 @@ export default function ContactPage() {
                 <Textarea
                   id="message"
                   rows={8}
-                  placeholder="Descrivi la tua idea, il problema da risolvere o il software che vorresti sviluppare..."
+                  value={form.message}
+                  onChange={(e) =>
+                    setForm({ ...form, message: e.target.value })
+                  }
+                  placeholder="Descrivi la tua idea..."
+                  required
                 />
               </div>
 
               <Button
+                type="submit"
+                disabled={loading}
                 size="lg"
                 className="w-full rounded-full md:w-auto"
               >
-                Richiedi una consulenza
+                {loading ? "Invio..." : "Richiedi una consulenza"}
 
-                <ArrowRight className="ml-2 h-4 w-4" />
+                {!loading && (
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                )}
               </Button>
 
             </form>
-
           </div>
 
         </div>
