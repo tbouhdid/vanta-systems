@@ -1,155 +1,119 @@
 "use client";
-import DashboardPreview from "./DashboardPreview";
+
+import Image from "next/image";
+import type { ReactNode } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import {
+  ArrowRight,
+  Cpu,
+  Database,
+  ShieldCheck,
+  Workflow,
+} from "lucide-react";
+
+const HERO_IMAGE = "/images/hero-laptop.png?v=20260806-1541";
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-screen items-center overflow-hidden bg-background">
-      {/* Background Glow */}
-      <div className="absolute left-1/2 top-0 h-[700px] w-[700px] -translate-x-1/2 rounded-full bg-white/8 blur-[180px]" />
+    <section id="home" className="relative isolate overflow-hidden bg-[#0b0c0d]">
+      <div className="pointer-events-none absolute inset-y-0 left-[46%] hidden w-[62%] lg:block">
+        <Image
+          src={HERO_IMAGE}
+          alt=""
+          fill
+          priority
+          sizes="70vw"
+          className="origin-right scale-[0.84] object-cover object-[54%_center] opacity-90"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,#0b0c0d_0%,rgba(11,12,13,0.98)_10%,rgba(11,12,13,0.58)_42%,rgba(11,12,13,0.04)_75%,#0b0c0d_100%)]" />
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#0b0c0d] to-transparent" />
+      </div>
 
-      {/* Grid */}
-      <div
-        className="absolute inset-0 opacity-[0.04]"
-        style={{
-          backgroundImage: `
-            linear-gradient(to right, white 1px, transparent 1px),
-            linear-gradient(to bottom, white 1px, transparent 1px)
-          `,
-          backgroundSize: "70px 70px",
-        }}
-      />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_25%,rgba(214,216,220,0.075),transparent_30%)]" />
 
-      <div
-  className="
-    relative
-    mx-auto
-    flex
-    w-full
-    max-w-[1500px]
-    flex-col
-    items-center
-    gap-16
-    px-6
-    pt-32
-    lg:flex-row
-    lg:items-center
-    lg:justify-between
-    lg:px-12
-  "
->
-        {/* LEFT */}
-
+      <div className="relative mx-auto max-w-[1440px] px-5 pb-10 pt-16 sm:px-8 lg:px-12 lg:pb-11 lg:pt-[96px]">
         <motion.div
-          initial={{ opacity: 0, y: 35 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-3xl text-center lg:text-left"
+          transition={{ duration: 0.65 }}
+          className="max-w-[625px]"
         >
-          <div className="mb-8 inline-flex rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs text-white sm:text-sm">
-            Software Engineering • AI • Automation
-          </div>
-
-          <h1 className="
-font-heading
-text-5xl
-font-bold
-leading-[0.9]
-tracking-tight
-sm:text-6xl
-lg:text-8xl
-">
-            Costruiamo
-            <span className="text-zinc-300"> software</span>
-            <br />
-            che fa crescere
-            <br />
-            il tuo business.
-          </h1>
-
-          <p className="mt-10 max-w-xl text-lg leading-8 text-muted-foreground">
-            Progettiamo software su misura, piattaforme web, automazioni e
-            soluzioni basate sull'intelligenza artificiale per aiutare le
-            aziende a digitalizzare i processi e crescere.
+          <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-[#bfc3c9]">
+            Software solutions
           </p>
 
-          <div className="mt-14 flex flex-col gap-4 sm:flex-row sm:justify-center lg:justify-start">
-            <a href="/contact">
-  <Button size="lg" className="rounded-full">
-    Richiedi una consulenza
-    <ArrowRight className="ml-2 h-4 w-4" />
-  </Button>
-</a>
+          <h1 className="mt-5 max-w-[610px] font-heading text-[42px] font-medium leading-[1.06] tracking-[-0.045em] text-white sm:text-[54px] lg:text-[61px]">
+            Soluzioni software
+            <br />
+            su misura per far
+            <br />
+            crescere <span className="font-normal italic text-[#d6d8dc]">il tuo business.</span>
+          </h1>
 
-            <a href="#services">
-  <Button
-    size="lg"
-    variant="outline"
-    className="rounded-full"
-  >
-    Scopri i servizi
-  </Button>
-</a>
-          </div>
+          <p className="mt-5 max-w-[510px] text-[14px] leading-6 text-zinc-300 sm:text-[15px]">
+            Progettiamo e sviluppiamo software, piattaforme web e automazioni
+            che semplificano i processi, aumentano l&apos;efficienza e generano valore.
+          </p>
 
-          {/* Value Proposition */}
-
-          <div className="mt-20 grid gap-8 md:grid-cols-3">
-            <div>
-              <h3 className="text-lg font-semibold">
-                Software su misura
-              </h3>
-
-              <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                Soluzioni progettate attorno ai processi e agli obiettivi della
-                tua azienda.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold">
-                Tecnologie moderne
-              </h3>
-
-              <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                Next.js, cloud, API, automazioni e intelligenza artificiale per
-                costruire prodotti solidi e scalabili.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold">
-                Collaborazione
-              </h3>
-
-              <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                Lavoriamo insieme al cliente in ogni fase del progetto, dalla
-                strategia al rilascio.
-              </p>
-            </div>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <a
+              href="#services"
+              className="inline-flex h-10 items-center gap-2 rounded-md bg-[#d6d8dc] px-4 text-[12px] font-medium text-[#111213] transition hover:bg-white"
+            >
+              Scopri le soluzioni <ArrowRight className="size-3.5" />
+            </a>
+            <a
+              href="/contact"
+              className="inline-flex h-10 items-center gap-2 rounded-md border border-white/35 px-4 text-[12px] font-medium text-white transition hover:border-white/70 hover:bg-white/5"
+            >
+              Parla del tuo progetto <ArrowRight className="size-3.5" />
+            </a>
           </div>
         </motion.div>
 
-        {/* RIGHT */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15, duration: 0.65 }}
+          className="relative mx-auto mt-11 w-[84%] overflow-hidden rounded-lg border border-white/10 lg:hidden"
+        >
+          <Image
+            src={HERO_IMAGE}
+            alt="Dashboard Vanta su laptop"
+            width={1536}
+            height={1024}
+            priority
+            className="aspect-[16/9] w-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0b0c0d]/45 to-transparent" />
+        </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.25, duration: 0.9 }}
-          className="
-          hidden
-          lg:block
-          rotate-[-5deg]
-          transition-transform
-          duration-700
-          hover:rotate-0
-        "
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.35, duration: 0.55 }}
+          className="mt-12 border-t border-white/[0.1] pt-5 lg:mt-16"
         >
-          <DashboardPreview />
+          <p className="mb-4 text-center text-[8px] font-medium uppercase tracking-[0.18em] text-zinc-400">
+            Soluzioni digitali che generano risultati
+          </p>
+          <div className="grid grid-cols-2 gap-y-4 lg:grid-cols-4">
+            <Feature icon={<Workflow size={15} />} text="Processi più efficienti" />
+            <Feature icon={<Database size={15} />} text="Dati sempre sotto controllo" />
+            <Feature icon={<ShieldCheck size={15} />} text="Scalabilità e sicurezza" />
+            <Feature icon={<Cpu size={15} />} text="Tecnologie moderne" />
+          </div>
         </motion.div>
       </div>
     </section>
+  );
+}
+
+function Feature({ icon, text }: { icon: ReactNode; text: string }) {
+  return (
+    <div className="flex items-center justify-center gap-2 text-center text-[10px] text-zinc-200 sm:text-[11px]">
+      <span className="text-zinc-300">{icon}</span>
+      <span>{text}</span>
+    </div>
   );
 }

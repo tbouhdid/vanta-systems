@@ -1,74 +1,50 @@
 "use client";
 
+import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
+
 import MobileMenu from "@/components/navigation/MobileMenu";
-import { Button } from "@/components/ui/button";
 import { navigation } from "@/data/navigation";
-import Image from "next/image";
 
 export default function Navbar() {
   return (
-    <header className="fixed inset-x-0 top-0 z-50">
-      <div
-        className="
-        mx-auto
-        mt-4
-        flex
-        max-w-7xl
-        items-center
-        justify-between
-        rounded-2xl
-        border
-        border-border/70
-        bg-background/70
-        px-4
-        py-3
-        backdrop-blur-xl
-        lg:px-6
-        lg:py-4
-    "
-      >
-        <a
-          href="#"
-          className="
-            text-lg
-            font-black
-            tracking-[0.28em]
-            lg:text-xl
-            lg:tracking-[0.35em]
-        "
+    <header className="relative z-50 border-b border-white/[0.07] bg-[#0b0c0d]">
+      <div className="mx-auto flex h-16 max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-12">
+        <Link
+          href="/#home"
+          aria-label="Vanta Systems - home"
+          className="flex flex-col leading-none"
         >
-          VANTA
-        </a>
+          <span className="text-[17px] font-bold tracking-[0.38em] text-white sm:text-[18px]">
+            VANTA
+          </span>
+          <span className="mt-1 text-[7px] font-semibold tracking-[0.46em] text-zinc-300">
+            SYSTEMS
+          </span>
+        </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-7 lg:flex">
           {navigation.map((item) => (
-            <a
+            <Link
               key={item.label}
               href={item.href}
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              className="text-[13px] text-zinc-300 transition-colors hover:text-white"
             >
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
         <>
-          {/* Desktop */}
-          <a href="/contact" className="hidden md:block">
-            <Button
-              className="
-        rounded-full
-        px-6
-        bg-zinc-100
-        text-black
-        hover:bg-white
-      "
-            >
-              Richiedi consulenza
-            </Button>
-          </a>
+          <Link
+            href="/contact"
+            className="hidden h-9 items-center gap-2 rounded-md border border-white/25 px-3.5 text-[11px] font-medium text-white transition hover:border-white/60 hover:bg-white/5 lg:inline-flex"
+          >
+            Richiedi una consulenza
+            <ArrowUpRight className="size-3.5" />
+          </Link>
 
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <MobileMenu />
           </div>
         </>
