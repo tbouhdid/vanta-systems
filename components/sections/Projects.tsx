@@ -4,8 +4,7 @@ import { ArrowRight, Boxes, GitBranch, Users } from "lucide-react";
 
 import Container from "@/components/shared/Container";
 import { projects } from "@/data/projects";
-
-type PreviewType = "crm" | "flow" | "factory" | "desk";
+import type { Project, ProjectPreview as ProjectPreviewType } from "@/types/project";
 
 export default function Projects() {
   return (
@@ -33,39 +32,43 @@ export default function Projects() {
         </div>
 
         <div className="mt-11 grid gap-6 lg:grid-cols-2">
-          {projects.map((project) => (
-            <article key={project.slug}>
-              <Link
-                href={`/projects/${project.slug}`}
-                className="group block overflow-hidden rounded-xl border border-[#d6d8dc] bg-[#fafaf8] shadow-[0_9px_22px_rgba(17,18,19,0.07)] transition duration-300 ease-out hover:-translate-y-1 hover:border-[#a8adb4] hover:shadow-[0_18px_36px_rgba(17,18,19,0.13)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1a1b1d]"
-              >
-              <ProjectPreview type={project.preview} badge={project.badge} />
-              <div className="flex min-h-[121px] items-end justify-between gap-5 px-5 py-5 sm:px-6 sm:py-6">
-                <div className="max-w-[430px]">
-                  <h3 className="font-heading text-[20px] font-medium tracking-[-0.035em]">
-                    {project.title}
-                  </h3>
-                  <p className="mt-2 text-[13px] leading-5 text-[#55585c]">
-                    {project.description}
-                  </p>
-                </div>
-                <span
-                  aria-hidden="true"
-                  className="mb-0.5 flex size-9 shrink-0 items-center justify-center rounded-full border border-[#bfc3c9] text-[#1a1b1d] transition group-hover:border-[#1a1b1d] group-hover:bg-[#1a1b1d] group-hover:text-white"
-                >
-                  <ArrowRight className="size-4" />
-                </span>
-              </div>
-              </Link>
-            </article>
-          ))}
+          {projects.map((project) => <ProjectCard key={project.slug} project={project} />)}
         </div>
       </Container>
     </section>
   );
 }
 
-function ProjectPreview({ type, badge }: { type: PreviewType; badge: string }) {
+export function ProjectCard({ project }: { project: Project }) {
+  return (
+    <article>
+      <Link
+        href={`/projects/${project.slug}`}
+        className="group block overflow-hidden rounded-xl border border-[#d6d8dc] bg-[#fafaf8] shadow-[0_9px_22px_rgba(17,18,19,0.07)] transition duration-300 ease-out hover:-translate-y-1 hover:border-[#a8adb4] hover:shadow-[0_18px_36px_rgba(17,18,19,0.13)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1a1b1d]"
+      >
+        <ProjectPreview type={project.preview} badge={project.badge} />
+        <div className="flex min-h-[121px] items-end justify-between gap-5 px-5 py-5 sm:px-6 sm:py-6">
+          <div className="max-w-[430px]">
+            <h3 className="font-heading text-[20px] font-medium tracking-[-0.035em]">
+              {project.title}
+            </h3>
+            <p className="mt-2 text-[13px] leading-5 text-[#55585c]">
+              {project.description}
+            </p>
+          </div>
+          <span
+            aria-hidden="true"
+            className="mb-0.5 flex size-9 shrink-0 items-center justify-center rounded-full border border-[#bfc3c9] text-[#1a1b1d] transition group-hover:border-[#1a1b1d] group-hover:bg-[#1a1b1d] group-hover:text-white"
+          >
+            <ArrowRight className="size-4" />
+          </span>
+        </div>
+      </Link>
+    </article>
+  );
+}
+
+function ProjectPreview({ type, badge }: { type: ProjectPreviewType; badge: string }) {
   return (
     <div className={`relative h-[218px] overflow-hidden bg-[#111213] sm:h-[244px] ${type === "flow" ? "bg-[radial-gradient(circle_at_1px_1px,rgba(214,216,220,0.12)_1px,transparent_0)] [background-size:17px_17px]" : ""}`}>
       <div className="flex h-full">
@@ -82,7 +85,7 @@ function ProjectPreview({ type, badge }: { type: PreviewType; badge: string }) {
   );
 }
 
-function MiniSidebar({ active }: { active: PreviewType }) {
+function MiniSidebar({ active }: { active: ProjectPreviewType }) {
   const labels = active === "factory" ? ["Prod.", "Ordini", "Magaz.", "KPI"] : active === "desk" ? ["Doc.", "Ticket", "Profilo", "Supporto"] : ["Dash.", "Clienti", "Flussi", "Report"];
 
   return (

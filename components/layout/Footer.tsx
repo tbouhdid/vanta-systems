@@ -1,82 +1,49 @@
-import { Code2, Mail, MessageCircle } from "lucide-react";
-import Link from "next/link";
+import { ArrowUpRight, Mail } from "lucide-react";
 
-const footerLinks = ["Home", "Servizi", "Soluzioni", "Progetti", "Chi Siamo", "Contatti"];
-const serviceLinks = [
-  "Sviluppo Software",
-  "Automazioni",
-  "Integrazioni & API",
-  "Consulenza & Strategy",
-];
+const email = "hello@vantasystems.it";
+const linkedInUrl =
+  process.env.NEXT_PUBLIC_LINKEDIN_URL ?? "https://www.linkedin.com/";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0b0c0d] pb-5">
+    <footer className="border-t border-white/[0.08] bg-[#0b0c0d]">
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12">
-        <div className="grid gap-10 border-b border-white/[0.12] py-8 sm:grid-cols-2 lg:grid-cols-[1.45fr_0.75fr_0.95fr_1fr] lg:gap-8 lg:py-10">
-          <div>
-            <Link href="/#home" className="flex w-fit flex-col leading-none">
-              <span className="text-[17px] font-bold tracking-[0.38em] text-white">VANTA</span>
-              <span className="mt-1 text-[7px] font-semibold tracking-[0.46em] text-zinc-300">SYSTEMS</span>
-            </Link>
-            <p className="mt-4 max-w-[212px] text-[11px] leading-5 text-zinc-400">
-              Software su misura, automazioni intelligenti e strategie per far crescere il tuo business.
-            </p>
-            <div className="mt-4 flex gap-3 text-zinc-300">
-              <Link aria-label="LinkedIn" href="/#contact" className="hover:text-white"><MessageCircle className="size-4" /></Link>
-              <Link aria-label="GitHub" href="/#contact" className="hover:text-white"><Code2 className="size-4" /></Link>
-              <a aria-label="Email" href="mailto:hello@vantasystems.it" className="hover:text-white"><Mail className="size-4" /></a>
-            </div>
+        <div className="flex flex-col gap-5 py-6 sm:flex-row sm:items-center sm:justify-between sm:py-7">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-3 text-[12px]">
+            <a
+              href={`mailto:${email}`}
+              className="group inline-flex items-center gap-2 text-zinc-400 transition-colors duration-200 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d6d8dc] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0c0d]"
+            >
+              <Mail
+                className="size-3.5 text-[#a8adb4] transition-colors group-hover:text-[#d6d8dc]"
+                strokeWidth={1.7}
+              />
+              {email}
+            </a>
+            <a
+              href={linkedInUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="group inline-flex items-center gap-1.5 text-zinc-400 transition-colors duration-200 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d6d8dc] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0c0d]"
+            >
+              LinkedIn
+              <ArrowUpRight
+                className="size-3.5 text-[#a8adb4] transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#d6d8dc]"
+                strokeWidth={1.7}
+              />
+            </a>
           </div>
 
-          <div>
-            <h4 className="text-[11px] font-medium text-white">Navigazione</h4>
-            <ul className="mt-4 space-y-1.5 text-[11px] text-zinc-400">
-              {footerLinks.map((link) => (
-                <li key={link}>
-                  <Link href={footerHref(link)} className="hover:text-white">{link}</Link>
-                </li>
-              ))}
-            </ul>
+          <div className="flex items-center gap-3 text-[11px] text-zinc-500 sm:gap-4">
+            <span>© 2026 VANTA Systems</span>
+            <span
+              aria-hidden="true"
+              className="size-1 rounded-full bg-[#8d939b]/70"
+            />
+            <span>Made in Italy</span>
           </div>
-
-          <div>
-            <h4 className="text-[11px] font-medium text-white">Servizi</h4>
-            <ul className="mt-4 space-y-1.5 text-[11px] text-zinc-400">
-              {serviceLinks.map((link) => (
-                <li key={link}><Link href="/#services" className="hover:text-white">{link}</Link></li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-[11px] font-medium text-white">Contatti</h4>
-            <ul className="mt-4 space-y-2 text-[11px] text-zinc-400">
-              <li><a href="mailto:hello@vantasystems.it" className="hover:text-white">hello@vantasystems.it</a></li>
-              <li><a href="tel:+391234567890" className="hover:text-white">+39 123 456 7890</a></li>
-              <li>Parma, Italia</li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-2 py-4 text-[10px] text-zinc-500 sm:flex-row sm:items-center sm:justify-between">
-          <span>© {new Date().getFullYear()} Vanta Systems S.r.l. – P.IVA 12345678901 – Tutti i diritti riservati</span>
-          <span className="flex gap-5"><Link href="/#contact" className="hover:text-zinc-300">Privacy Policy</Link><Link href="/#contact" className="hover:text-zinc-300">Cookie Policy</Link></span>
         </div>
       </div>
     </footer>
   );
-}
-
-function footerHref(label: string) {
-  const anchors: Record<string, string> = {
-    Home: "/#home",
-    Servizi: "/#services",
-    Soluzioni: "/#services",
-    Progetti: "/#projects",
-    "Chi Siamo": "/#about",
-    Contatti: "/#contact",
-  };
-
-  return anchors[label] ?? "#home";
 }

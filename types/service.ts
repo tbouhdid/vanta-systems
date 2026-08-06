@@ -4,4 +4,5 @@ export interface Service {
   icon: LucideIcon;
   title: string;
   description: string;
+  href?: string;
 }

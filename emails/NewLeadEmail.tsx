@@ -5,7 +5,6 @@ import {
   Heading,
   Html,
   Preview,
-  Section,
   Text,
 } from "@react-email/components";
 
@@ -13,6 +12,9 @@ interface Props {
   name: string;
   email: string;
   company?: string;
+  phone?: string;
+  projectType?: string;
+  budget?: string;
   message: string;
 }
 
@@ -20,6 +22,9 @@ export default function NewLeadEmail({
   name,
   email,
   company,
+  phone,
+  projectType,
+  budget,
   message,
 }: Props) {
   return (
@@ -63,6 +68,18 @@ export default function NewLeadEmail({
 
           <Text style={{ color: "#d4d4d4" }}>
             <strong>Azienda:</strong> {company || "-"}
+          </Text>
+
+          <Text style={{ color: "#d4d4d4" }}>
+            <strong>Telefono:</strong> {phone || "-"}
+          </Text>
+
+          <Text style={{ color: "#d4d4d4" }}>
+            <strong>Tipo di progetto:</strong> {projectType || "-"}
+          </Text>
+
+          <Text style={{ color: "#d4d4d4" }}>
+            <strong>Budget indicativo:</strong> {budget || "-"}
           </Text>
 
           <Text style={{ color: "#fff", marginTop: "32px" }}>

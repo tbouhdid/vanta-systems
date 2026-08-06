@@ -16,7 +16,7 @@ export const navigation = [
     href: "/#projects",
   },
   {
-    label: "Chi Siamo",
+    label: "Chi siamo",
     href: "/#about",
   },
   {

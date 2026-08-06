@@ -9,7 +9,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
     try {
-        const { name, email, company, message } = await req.json();
+        const { name, email, company, phone, projectType, budget, message } = await req.json();
 
         if (!name || !email || !message) {
             return NextResponse.json(
@@ -30,6 +30,9 @@ export async function POST(req: Request) {
                     name,
                     email,
                     company,
+                    phone,
+                    projectType,
+                    budget,
                     message,
                 })
             ),

@@ -14,6 +14,7 @@ import {
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
 import InteractiveMockup from "@/components/projects/InteractiveMockup";
+import { demoViewportLayers } from "@/components/projects/demo/layers";
 import Container from "@/components/shared/Container";
 import { getProjectBySlug, projects } from "@/data/projects";
 
@@ -52,7 +53,7 @@ export default async function ProjectPage(
   return (
     <>
       <Navbar />
-      <main className="bg-[#0b0c0d]">
+      <main className="bg-[#0b0c0d] pb-[calc(5rem+env(safe-area-inset-bottom))]">
         <section className="relative isolate overflow-hidden pb-16 pt-10 sm:pb-20 sm:pt-12 lg:pb-24">
           <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[500px] bg-[radial-gradient(circle_at_58%_8%,rgba(214,216,220,0.14),transparent_36%)]" />
           <Container>
@@ -94,13 +95,13 @@ export default async function ProjectPage(
               </div>
             </div>
 
-            <div className="mt-12 lg:mt-16">
-              <InteractiveMockup variant={project.preview} productName={project.title} />
-              <p className="mt-3 text-center text-[10px] text-zinc-500">
-                Selettore Theme dimostrativo: mostra come l&apos;interfaccia possa adattarsi all&apos;identità del tuo brand.
-              </p>
-            </div>
           </Container>
+          <div className="mx-auto mt-12 w-full max-w-[1680px] px-4 sm:px-8 lg:mt-16 lg:px-10">
+            <InteractiveMockup variant={project.preview} productName={project.title} />
+            <p className="mt-4 text-center text-[11px] leading-5 text-zinc-500">
+              Questa è una demo interattiva. Il prodotto finale viene progettato sui processi e sull&apos;identità della tua azienda.
+            </p>
+          </div>
         </section>
 
         <section className="border-y border-white/[0.08] bg-[#111213] py-16 sm:py-20 lg:py-24">
@@ -219,7 +220,7 @@ export default async function ProjectPage(
       <Footer />
       <Link
         href="/contact"
-        className="fixed bottom-4 right-4 z-40 inline-flex h-11 items-center gap-2 rounded-full border border-white/[0.18] bg-[#151617]/90 px-4 text-[12px] font-medium text-white shadow-[0_14px_34px_rgba(0,0,0,0.3)] backdrop-blur-md transition duration-300 hover:-translate-y-0.5 hover:border-[#bfc3c9] hover:bg-[#242628] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d6d8dc] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0c0d] sm:bottom-6 sm:right-6 sm:px-5"
+        className={`fixed ${demoViewportLayers.stickyCta} bottom-[calc(1rem+env(safe-area-inset-bottom))] right-[calc(1rem+env(safe-area-inset-right))] inline-flex h-10 items-center gap-2 rounded-full border border-white/[0.18] bg-[#151617]/90 px-3.5 text-[11px] font-medium text-white shadow-[0_14px_34px_rgba(0,0,0,0.3)] backdrop-blur-md transition duration-300 hover:-translate-y-0.5 hover:border-[#bfc3c9] hover:bg-[#242628] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d6d8dc] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0c0d] sm:bottom-[calc(1.5rem+env(safe-area-inset-bottom))] sm:right-[calc(1.5rem+env(safe-area-inset-right))] sm:h-11 sm:px-5 sm:text-[12px]`}
       >
         Richiedi una consulenza
         <ArrowRight className="size-3.5" />
