@@ -7,10 +7,12 @@ import { Button } from "@/components/ui/button";
 
 interface SuccessCardProps {
   email: string;
+  confirmationSent: boolean;
 }
 
 export default function SuccessCard({
   email,
+  confirmationSent,
 }: SuccessCardProps) {
   return (
     <motion.div
@@ -45,21 +47,34 @@ export default function SuccessCard({
       </p>
 
       <div className="mt-7 rounded-xl border border-white/[0.1] bg-white/[0.035] p-5">
-        <p className="text-[10px] uppercase tracking-[0.2em] text-[#a8adb4]">
-          Email di conferma inviata a
-        </p>
+        {confirmationSent ? (
+          <>
+            <p className="text-[10px] uppercase tracking-[0.2em] text-[#a8adb4]">
+              Email di conferma inviata a
+            </p>
 
-        <p className="mt-3 text-[16px] font-medium text-white">
-          {email}
-        </p>
+            <p className="mt-3 text-[16px] font-medium text-white">
+              {email}
+            </p>
 
-        <p className="mt-3 text-[11px] text-zinc-400">
-          Ti ricontatteremo entro <strong>48 ore lavorative</strong>.
-        </p>
+            <p className="mt-3 text-[11px] text-zinc-400">
+              Ti ricontatteremo direttamente a questo indirizzo.
+            </p>
+          </>
+        ) : (
+          <p className="text-[11px] text-zinc-400">
+            La richiesta è stata ricevuta correttamente. Ti contatteremo a
+            questo indirizzo.
+          </p>
+        )}
       </div>
 
       <div className="mt-7 grid gap-2 text-left text-[10px] text-zinc-400 md:grid-cols-3">
-        <div>✓ Email di conferma inviata</div>
+        <div>
+          {confirmationSent
+            ? "✓ Email di conferma inviata"
+            : "✓ Richiesta ricevuta"}
+        </div>
         <div>✓ Nessun impegno</div>
         <div>✓ Consulenza personalizzata</div>
       </div>

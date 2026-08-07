@@ -125,6 +125,7 @@ export default function ContactPage() {
   const [form, setForm] = useState<ContactForm>(initialForm);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [confirmationSent, setConfirmationSent] = useState(true);
   const [error, setError] = useState("");
 
   function updateField(field: keyof ContactForm, value: string) {
@@ -142,13 +143,16 @@ export default function ContactPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
-      const data = await response.json().catch(() => null);
+      const data = (await response.json().catch(() => null)) as
+        | { error?: string; confirmationSent?: boolean }
+        | null;
 
       if (!response.ok) {
         setError(data?.error ?? "Non è stato possibile inviare la richiesta. Riprova tra poco.");
         return;
       }
 
+      setConfirmationSent(data?.confirmationSent !== false);
       setSuccess(true);
     } catch {
       setError("Errore durante l’invio. Verifica la connessione e riprova.");
@@ -232,7 +236,10 @@ export default function ContactPage() {
 
                 <section id="contact-form" className="mt-4 scroll-mt-24 rounded-2xl border border-white/[0.12] bg-[#151617]/95 p-5 shadow-[0_24px_64px_rgba(0,0,0,0.22)] sm:p-7 lg:p-8">
                   {success ? (
-                    <SuccessCard email={form.email} />
+                    <SuccessCard
+                      email={form.email}
+                      confirmationSent={confirmationSent}
+                    />
                   ) : (
                     <form onSubmit={handleSubmit} className="space-y-5">
                       <div className="flex flex-col gap-1.5 border-b border-white/[0.09] pb-5 sm:flex-row sm:items-end sm:justify-between">

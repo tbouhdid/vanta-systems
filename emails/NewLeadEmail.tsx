@@ -16,6 +16,7 @@ interface Props {
   projectType?: string;
   budget?: string;
   message: string;
+  submittedAt: string;
 }
 
 export default function NewLeadEmail({
@@ -26,6 +27,7 @@ export default function NewLeadEmail({
   projectType,
   budget,
   message,
+  submittedAt,
 }: Props) {
   return (
     <Html>
@@ -55,7 +57,7 @@ export default function NewLeadEmail({
               marginTop: 0,
             }}
           >
-            🚀 Nuova richiesta di consulenza
+            Nuova richiesta di consulenza
           </Heading>
 
           <Text style={{ color: "#d4d4d4" }}>
@@ -80,6 +82,10 @@ export default function NewLeadEmail({
 
           <Text style={{ color: "#d4d4d4" }}>
             <strong>Budget indicativo:</strong> {budget || "-"}
+          </Text>
+
+          <Text style={{ color: "#d4d4d4" }}>
+            <strong>Ricevuta il:</strong> {submittedAt}
           </Text>
 
           <Text style={{ color: "#fff", marginTop: "32px" }}>
