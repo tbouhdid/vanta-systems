@@ -1,8 +1,9 @@
-import { ArrowUpRight, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
+
+import LinkedInIcon from "@/components/shared/LinkedInIcon";
 
 const email = "hello@vantasystems.it";
-const linkedInUrl =
-  process.env.NEXT_PUBLIC_LINKEDIN_URL ?? "https://www.linkedin.com/";
+const linkedInUrl = "https://www.linkedin.com/company/vantasystems-it/";
 
 export default function Footer() {
   return (
@@ -23,14 +24,14 @@ export default function Footer() {
             <a
               href={linkedInUrl}
               target="_blank"
-              rel="noreferrer"
-              className="group inline-flex items-center gap-1.5 text-zinc-400 transition-colors duration-200 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d6d8dc] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0c0d]"
+              rel="noopener noreferrer"
+              aria-label="VANTA Systems su LinkedIn"
+              className="group inline-flex items-center gap-2 text-zinc-400 transition-colors duration-200 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d6d8dc] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0c0d]"
             >
-              LinkedIn
-              <ArrowUpRight
-                className="size-3.5 text-[#a8adb4] transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#d6d8dc]"
-                strokeWidth={1.7}
+              <LinkedInIcon
+                className="size-3.5 text-[#a8adb4] transition-colors group-hover:text-[#d6d8dc]"
               />
+              LinkedIn
             </a>
           </div>
 

@@ -26,6 +26,7 @@ import SuccessCard from "@/components/contact/SuccessCard";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
 import Container from "@/components/shared/Container";
+import LinkedInIcon from "@/components/shared/LinkedInIcon";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -49,6 +50,8 @@ const initialForm: ContactForm = {
   budget: "",
   message: "",
 };
+
+const linkedInUrl = "https://www.linkedin.com/company/vantasystems-it/";
 
 const trustPoints = [
   "Consulenza iniziale gratuita",
@@ -377,6 +380,18 @@ function AvailabilityCard() {
           </div>
         ))}
       </div>
+      <a
+        href={linkedInUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="VANTA Systems su LinkedIn"
+        className="group mt-5 inline-flex items-center gap-2 text-[11px] text-zinc-400 transition-colors duration-200 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d6d8dc] focus-visible:ring-offset-2 focus-visible:ring-offset-[#141516]"
+      >
+        <LinkedInIcon
+          className="size-3.5 text-[#a8adb4] transition-colors group-hover:text-[#d6d8dc]"
+        />
+        Segui VANTA Systems su LinkedIn
+      </a>
     </section>
   );
 }
