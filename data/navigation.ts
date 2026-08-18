@@ -8,12 +8,12 @@ export const navigation = [
     href: "/#services",
   },
   {
-    label: "Soluzioni",
-    href: "/#services",
-  },
-  {
     label: "Progetti",
     href: "/#projects",
+  },
+  {
+    label: "For Agencies",
+    href: "/for-agencies",
   },
   {
     label: "Chi siamo",
@@ -21,6 +21,6 @@ export const navigation = [
   },
   {
     label: "Contatti",
-    href: "/#contact",
+    href: "/contact",
   },
 ];

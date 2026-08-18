@@ -39,34 +39,34 @@ export default function Hero() {
           className="max-w-[625px]"
         >
           <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-[#bfc3c9]">
-            Software solutions
+            Soluzioni digitali su misura
           </p>
 
           <h1 className="mt-5 max-w-[610px] font-heading text-[42px] font-medium leading-[1.06] tracking-[-0.045em] text-white sm:text-[54px] lg:text-[61px]">
-            Soluzioni software
+            Software, siti web e
             <br />
-            su misura per far
+            automazioni per far
             <br />
             crescere <span className="font-normal italic text-[#d6d8dc]">il tuo business.</span>
           </h1>
 
           <p className="mt-5 max-w-[510px] text-[14px] leading-6 text-zinc-300 sm:text-[15px]">
-            Progettiamo e sviluppiamo software, piattaforme web e automazioni
-            che semplificano i processi, aumentano l&apos;efficienza e generano valore.
+            Progettiamo soluzioni digitali su misura per aziende e lavoriamo come
+            partner tecnico white-label per agenzie e professionisti.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-3">
             <a
-              href="#services"
+              href="/contact"
               className="inline-flex h-10 items-center gap-2 rounded-md bg-[#d6d8dc] px-4 text-[12px] font-medium text-[#111213] transition hover:bg-white"
             >
-              Scopri le soluzioni <ArrowRight className="size-3.5" />
+              Parlaci del tuo progetto <ArrowRight className="size-3.5" />
             </a>
             <a
-              href="/contact"
+              href="/for-agencies"
               className="inline-flex h-10 items-center gap-2 rounded-md border border-white/35 px-4 text-[12px] font-medium text-white transition hover:border-white/70 hover:bg-white/5"
             >
-              Parla del tuo progetto <ArrowRight className="size-3.5" />
+              Sei un&apos;agenzia? <ArrowRight className="size-3.5" />
             </a>
           </div>
         </motion.div>

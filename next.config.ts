@@ -19,6 +19,9 @@ const nextConfig: NextConfig = {
       {
         pathname: "/images/services/consulting-strategy.webp",
       },
+      {
+        pathname: "/images/for-agencies/editorial-production-desk.webp",
+      },
     ],
   },
 };

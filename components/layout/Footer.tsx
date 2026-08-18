@@ -1,4 +1,5 @@
 import { Mail } from "lucide-react";
+import Link from "next/link";
 
 import LinkedInIcon from "@/components/shared/LinkedInIcon";
 
@@ -33,6 +34,12 @@ export default function Footer() {
               />
               LinkedIn
             </a>
+            <Link
+              href="/for-agencies"
+              className="text-zinc-400 transition-colors duration-200 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d6d8dc] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0c0d]"
+            >
+              VANTA for Agencies
+            </Link>
           </div>
 
           <div className="flex items-center gap-3 text-[11px] text-zinc-500 sm:gap-4">

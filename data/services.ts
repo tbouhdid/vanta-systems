@@ -1,5 +1,5 @@
 import {
-  ChartNoAxesCombined,
+  AppWindow,
   Cloud,
   Code2,
   Workflow,
@@ -16,6 +16,13 @@ export const services: Service[] = [
     href: "/services/software-development",
   },
   {
+    icon: AppWindow,
+    title: "Siti Web & Landing Page",
+    description:
+      "Siti veloci, responsive e orientati alla conversione, progettati attorno al tuo brand.",
+    href: "/services/websites-landing-pages",
+  },
+  {
     icon: Workflow,
     title: "Automazioni",
     description:
@@ -28,12 +35,5 @@ export const services: Service[] = [
     description:
       "Colleghiamo sistemi, servizi e dati per un ecosistema efficiente.",
     href: "/services/system-integration",
-  },
-  {
-    icon: ChartNoAxesCombined,
-    title: "Consulenza & Strategy",
-    description:
-      "Analizziamo il tuo business e costruiamo la strategia digitale.",
-    href: "/services/consulting-strategy",
   },
 ];
